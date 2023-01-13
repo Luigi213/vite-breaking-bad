@@ -11,15 +11,17 @@ export default {
             store,
         }
     },
-    mounted(){
+    created(){
         this.getListCards();
     },
     methods:{
         getListCards(){
             axios.get(store.url).then((response) => {
                 let ArrayCard = response.data
-                for(let i=0; i<15;i++){
-                    store.cardList.push(ArrayCard.data[i])
+                for(let i=0; i<ArrayCard.data.length;i++){
+                    if(ArrayCard.data[i].archetype == 'Alien'){
+                        store.cardList.push(ArrayCard.data[i])
+                    }
                 }
             })
         }
