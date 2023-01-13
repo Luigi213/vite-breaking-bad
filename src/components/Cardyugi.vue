@@ -23,15 +23,13 @@ export default {
     @use '../style/partials/variables' as *;
     .container-card{
         display: flex;
-        justify-content:space-around;
+        justify-content:space-between;
         flex-wrap: wrap;
         .image-yu{
-            width: calc(100% / 5);  
-            height: 405px;
-            display: flex; 
-            
+            width: calc(100% / 5 - 31.5px);              
             .card{
-                width: 90%;  
+                width: 100%;
+                height: 375px;
                 margin-bottom: 20px;
                 text-align: center;
                 background-color: $secondary-orange;
