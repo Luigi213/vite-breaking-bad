@@ -11,20 +11,23 @@ export default {
             store,
         }
     },
-    created(){
+    mounted(){
         this.getListCards();
     },
     methods:{
         getListCards(){
             axios.get(store.url).then((response) => {
-                store.cardList = response.data
+                let ArrayCard = response.data
+                for(let i=0; i<15;i++){
+                    store.cardList.push(ArrayCard.data[i])
+                }
             })
         }
     }
 }
 </script>
 <template lang="">
-    <AppContent v-for="(card,index) in store.cardList" :key="index" :cardYugi="card"/>
+    <AppContent/>
 </template>
 <style lang="scss">
     @use './style/generals.scss' as *;

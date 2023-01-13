@@ -1,17 +1,23 @@
 <script>
 import Cardyugi from './Cardyugi.vue';
 export default {
-    components:{
-        Cardyugi,
-    },
-    props:{
-        cardYugi: Array
-    },
-}
+    components: {
+        Cardyugi
+    }
+}   
 </script>
-<template lang="">
-    <Cardyugi  v-for="(yugiCd,index) in cardYugi" :key="index" :cd="yugiCd"/>
+<template lang="">  
+    <div class="container">
+        <div class="container-card">
+            <Cardyugi/>                    
+        </div>
+    </div>
 </template>
 <style lang="scss" scoped>
-    
+    .container{
+        .container-card{
+            display: flex;
+            flex-wrap: wrap;
+        }
+    }
 </style>
