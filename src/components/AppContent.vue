@@ -1,19 +1,25 @@
 <script>
 import Cardyugi from './Cardyugi.vue';
-import { store } from '../store.js'
 export default {
     components: {
         Cardyugi
     },
     data(){
         return{
-            store
+            loading: true
+        }
+    },  
+    mounted(){
+        if(this.loading == true){
+            setTimeout(() => {
+                this.loading = false
+            }, 2000)
         }
     }
 }   
 </script>
 <template lang="">  
-    <div v-if="store.cardList =[]" class="disp">
+    <div v-if="loading" class="disp">
         <h1>caricamento in corso</h1>
         <div class="loader"></div>
     </div>
