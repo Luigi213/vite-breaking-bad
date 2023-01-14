@@ -4,7 +4,6 @@ export default {
     data(){
         return{
             cardArray: store,
-            store
         }
     },
 }

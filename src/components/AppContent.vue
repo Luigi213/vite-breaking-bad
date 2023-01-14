@@ -23,45 +23,55 @@ export default {
         <h1>caricamento in corso</h1>
         <div class="loader"></div>
     </div>
-    <div v-else class="bg">
-        <div class="container">
-            <div class="row">
-                <h3>Found 39 cards</h3>
-                <Cardyugi/>                    
+    <div v-else>
+        <header>
+            <div class="logo">
+                <img src="https://img.konami.com/products_master/eu_publish/yugioh_rush_duel/eu/it/images/rd_1_169png.png" alt="logo-yugi">
+            </div>
+            <h1>Yu-Gi-Oh Api</h1>
+        </header>    
+        <div class="bg">
+            <div class="container">
+                <div class="row">
+                    <h3>Found 39 cards</h3>
+                    <Cardyugi/>                    
+                </div>
             </div>
         </div>
     </div>
 </template>
 <style lang="scss" scoped>
     @use '../style/partials/variables' as *;
+    @use '../style/partials/mixins' as *;
     .disp{
         height: 100px;
-        display: flex;
-        align-items: center;
+        @include display;
         justify-content: center;
         h1{
             margin-right: 20px;
         }
         .loader {
-            border: 10px solid #f3f3f3; /* Light grey */
-            border-top: 10px solid #3498db; /* Blue */
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
+            @include loader
         }
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
     }
+    header{
+        background-color: white;
+        @include display;
+        .logo{
+            width: 100px;
+        }
+    }
     .bg{
         background-color: orange ;
+        padding-top: 40px ;
         .container{
             .row{
-                display: flex;
+                @include display;
                 flex-direction: column;
-                align-items: center;
                 background-color: white;
                 padding: 30px;
                 h3{
