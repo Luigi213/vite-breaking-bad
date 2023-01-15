@@ -1,21 +1,24 @@
 <script>
 import Cardyugi from './Cardyugi.vue';
+import { store } from '../store.js'
 export default {
     components: {
-        Cardyugi
+        Cardyugi,
     },
     data(){
         return{
-            loading: true
+            store,
+            loading: true,
+            numCard: store.cardList,  
         }
-    },  
+    },
     mounted(){
         if(this.loading == true){
             setTimeout(() => {
                 this.loading = false
             }, 2000)
-        }
-    }
+        }        
+    },
 }   
 </script>
 <template lang="">  
@@ -33,7 +36,9 @@ export default {
         <div class="bg">
             <div class="container">
                 <div class="row">
-                    <h3>Found 39 cards</h3>
+                    <div class="search">
+                        <h3 v-for="(item, index) in numCard" :key="index">Found {{index + 1}}  cards</h3>
+                    </div>
                     <Cardyugi/>                    
                 </div>
             </div>
@@ -74,11 +79,17 @@ export default {
                 flex-direction: column;
                 background-color: white;
                 padding: 30px;
-                h3{
+                .search{
                     width: 100%;
-                    background-color: rgb(58, 58, 58);
-                    padding: 15px;
-                    color: $primary-white;
+                    h3:last-child{
+                        background-color: rgb(58, 58, 58);
+                        padding: 15px;
+                        color: $primary-white;
+                        width: 100%;
+                    }
+                    h3:not(h3:last-child){
+                        display: none;
+                    }
                 }
             }
         }

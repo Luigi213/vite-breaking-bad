@@ -11,7 +11,7 @@ export default {
             store,
         }
     },
-    created(){
+    mounted(){
         this.getListCards();
     },
     methods:{
