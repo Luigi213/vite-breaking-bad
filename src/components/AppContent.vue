@@ -6,21 +6,43 @@ import { store } from '../store.js'
 export default {
     components: {
         Cardyugi,
-        AppSearch,
+        AppSearch
     },
     data(){
         return{
             store,
             loading: true,
-            numCard: store.cardList,  
         }
     },
     mounted(){
+        this.getListCards();
+        this.getArcheType();
         if(this.loading == true){
             setTimeout(() => {
                 this.loading = false
             }, 1000)
         }        
+    },
+    methods:{
+        getListCards(word){
+            if(word === undefined){
+                axios.get(store.url + '?archetype=Alien').then((response) => {
+                    store.cardList = response.data.data
+                    console.log(word)
+                })
+            }
+            else{
+                axios.get(store.url + '?archetype=' + word).then((response) => {
+                    store.cardList = response.data.data
+                    console.log(word)
+                })
+            }
+        },
+        getArcheType(){
+            axios.get(store.urlArche).then((reponse) => {
+                store.type = reponse.data
+            })
+        }
     }
 }   
 </script>
@@ -38,10 +60,10 @@ export default {
         </header>    
         <div class="bg">
             <div class="container">
-                <AppSearch/>
+                <AppSearch @search="getListCards"/>
                 <div class="row">
                     <div class="search">
-                        <h3 v-for="(item, index) in numCard" :key="index">Found {{index + 1}}  cards</h3>
+                        <h3 v-for="(item, index) in store.cardList" :key="index">Found {{index + 1}}  cards</h3>
                     </div>
                     <Cardyugi/>                    
                 </div>

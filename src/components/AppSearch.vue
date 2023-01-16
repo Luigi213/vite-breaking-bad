@@ -3,15 +3,21 @@ import { store } from '../store.js'
 export default {
     data(){
         return{
-            store
+            store,
+        }
+    },
+    methods:{
+        sendValue(){
+            this.$emit('search', store.typeArche)
         }
     }
 }
 </script>
 <template lang="">
     <div>
-        <select name="type" id="type">
-            <option v-for="(arType, index) in store.type" :key="index" >{{arType.archetype_name}}</option>
+        <select v-model="store.typeArche" @change="sendValue" name="type" id="type">
+            <option value="Alien">Alien</option>
+            <option v-for="(arType, index) in store.type" :key="index">{{arType.archetype_name}}</option>
         </select>
     </div>
 </template>
