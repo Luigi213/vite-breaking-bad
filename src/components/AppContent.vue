@@ -1,9 +1,12 @@
 <script>
 import Cardyugi from './Cardyugi.vue';
+import AppSearch from './AppSearch.vue';
+import axios from 'axios'
 import { store } from '../store.js'
 export default {
     components: {
         Cardyugi,
+        AppSearch,
     },
     data(){
         return{
@@ -16,9 +19,9 @@ export default {
         if(this.loading == true){
             setTimeout(() => {
                 this.loading = false
-            }, 2000)
+            }, 1000)
         }        
-    },
+    }
 }   
 </script>
 <template lang="">  
@@ -35,6 +38,7 @@ export default {
         </header>    
         <div class="bg">
             <div class="container">
+                <AppSearch/>
                 <div class="row">
                     <div class="search">
                         <h3 v-for="(item, index) in numCard" :key="index">Found {{index + 1}}  cards</h3>

@@ -1,28 +1,30 @@
 <script>
 import AppContent from './components/AppContent.vue';
-import axios from 'axios'
-import { store } from './store.js'
+import { store } from './store.js';
+import axios from 'axios';
 export default {
     components:{
         AppContent,
     },
     data(){
         return{
-            store,
+            store
         }
     },
     mounted(){
+        this.getArcheType();
         this.getListCards();
     },
     methods:{
         getListCards(){
-            axios.get(store.url).then((response) => {
-                let ArrayCard = response.data
-                for(let i=0; i<ArrayCard.data.length;i++){
-                    if(ArrayCard.data[i].archetype == 'Alien'){
-                        store.cardList.push(ArrayCard.data[i])
-                    }
-                }
+            axios.get(`${store.url}?archetype=Alien}`).then((response) => {
+                store.cardList = response.data.data
+            })
+        },
+        getArcheType(){
+            axios.get(store.urlArche).then((reponse) => {
+                store.type = reponse.data
+                console.log(store.type)
             })
         }
     }
@@ -32,5 +34,5 @@ export default {
     <AppContent/>
 </template>
 <style lang="scss">
-    @use './style/generals.scss' as *;
+    @use './style/generals.scss';
 </style>

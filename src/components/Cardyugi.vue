@@ -3,16 +3,16 @@ import { store } from '../store.js'
 export default {
     data(){
         return{
-            cardArray: store,
+            cardArray: store.cardList,
         }
     },
 }
 </script>
 <template lang="">
     <div class="container-card">
-        <div class="image-yu" v-for="(card, index) in cardArray.cardList" :key="index">
-            <div class="card" v-for="(card_image, index) in card.card_images" :key="index">
-                <img :src="card_image.image_url" alt="">            
+        <div class="image-yu" v-for="(card, index) in cardArray" :key="index">
+            <div class="card">
+                <img :src="card.card_images[0].image_url" alt="">            
                 <h3>{{ card.name }}</h3>
                 <span>{{ card.archetype }}</span>
             </div>
