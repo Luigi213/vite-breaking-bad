@@ -15,12 +15,14 @@ export default {
 </script>
 <template lang="">
     <div>
-        <select v-model="store.typeArche" @change="sendValue" name="type" id="type">
-            <option value="Alien">Alien</option>
+        <select class="opt" v-model="store.typeArche" @change="sendValue" name="ciao" id="type">
             <option v-for="(arType, index) in store.type" :key="index">{{arType.archetype_name}}</option>
         </select>
     </div>
 </template>
 <style lang="scss" scoped>
-    
+    .opt{
+        padding: 10px;
+        margin: 20px 0;
+    }
 </style>

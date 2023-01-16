@@ -28,13 +28,11 @@ export default {
             if(word === undefined){
                 axios.get(store.url + '?archetype=Alien').then((response) => {
                     store.cardList = response.data.data
-                    console.log(word)
                 })
             }
             else{
                 axios.get(store.url + '?archetype=' + word).then((response) => {
                     store.cardList = response.data.data
-                    console.log(word)
                 })
             }
         },
@@ -63,7 +61,7 @@ export default {
                 <AppSearch @search="getListCards"/>
                 <div class="row">
                     <div class="search">
-                        <h3 v-for="(item, index) in store.cardList" :key="index">Found {{index + 1}}  cards</h3>
+                        <h3 v-for="(item, index) in store.cardList" :key="index">Found {{ store.cardList.length }}  cards</h3>
                     </div>
                     <Cardyugi/>                    
                 </div>
@@ -98,7 +96,6 @@ export default {
     }
     .bg{
         background-color: orange ;
-        padding-top: 40px ;
         .container{
             .row{
                 @include display;
