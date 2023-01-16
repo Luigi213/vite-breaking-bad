@@ -15,8 +15,8 @@ export default {
 </script>
 <template lang="">
     <div>
-        <select class="opt" v-model="store.typeArche" @change="sendValue" name="ciao" id="type">
-            <option v-for="(arType, index) in store.type" :key="index">{{arType.archetype_name}}</option>
+        <select class="opt" v-model="store.typeArche" @change="sendValue" name="type" id="type">
+            <option v-for="(arType, index) in store.type" :key="index" :value="arType.archetype_name">{{arType.archetype_name}}</option>
         </select>
     </div>
 </template>
