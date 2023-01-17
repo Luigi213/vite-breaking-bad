@@ -95,7 +95,6 @@ export default {
         }
     }
     .bg{
-        background-color: orange ;
         .container{
             .row{
                 @include display;
